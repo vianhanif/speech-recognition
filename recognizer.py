@@ -18,13 +18,16 @@ class Recognition:
         if resources:
             self.audio_file = path.join(path.dirname(path.realpath(__file__)), resources)
             with sr.AudioFile(self.audio_file) as source:
+                print("Recording...")
                 self.audio = self.speech.record(source)
         else:
             with sr.Microphone() as source:
+                print("Listening to microphone...")
                 self.speech.adjust_for_ambient_noise(source)
                 self.audio = self.speech.listen(source)
         
     def getRecognizer(self):
+        print("Trying to recognize with " + self.recognizer + "...")
         return {
             "sphinx" : self.speech.recognize_sphinx(self.audio),
             "google" : self.speech.recognize_google(self.audio),

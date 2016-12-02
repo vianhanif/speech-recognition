@@ -1,12 +1,21 @@
 from recognizer import Recognition
 from speech import Robot
+from datas import DataSet
 
-speech = Recognition() # default : Recognition()
+speech = Recognition("google") # default : Recognition()
 robot = Robot()
+data = DataSet("src/dataset.txt")
 
-print("say something!")
-speech.listen() # or speech.listen("src/english.wav")
-speech.recognize()
+def saveRecord():
+    for word in speech.getText("split"):
+        data.write(word)
+    data.save()
 
-print(speech.getText()) # speech.getText("split") for array
-robot.speak(speech.getText())
+def main():
+    speech.listen() # or speech.listen("src/english.wav")
+    speech.recognize()
+    #robot.speak(speech.getText())
+    saveRecord()
+    data.toString()
+    
+if __name__ == '__main__':main()
