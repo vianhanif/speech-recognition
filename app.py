@@ -1,7 +1,7 @@
 from recognizer import Recognition
 from speech import Robot
 
-speech = Recognition("google") # default : Recognition()
+speech = Recognition() # default : Recognition()
 robot = Robot()
 
 print("say something!")
