@@ -12,7 +12,7 @@ def saveRecord():
     data.save()
 
 def main():
-    speech.listen() # or speech.listen("src/english.wav")
+    speech.listen("src/english.wav") # or speech.listen("src/english.wav")
     if speech.recognize():
         #robot.speak("It's me!! I'm Alvian. age 20 years old, still young")
         saveRecord()

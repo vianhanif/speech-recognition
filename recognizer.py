@@ -10,6 +10,7 @@ class Recognition:
     data = None
     audio_file = None
     error = False
+    URL = "http://216.58.192.142"
 
     def __init__(self, recognizer = "sphinx"):
         self.speech = sr.Recognizer()
@@ -29,7 +30,7 @@ class Recognition:
 
     def isConnected(self):
         try:
-            internet.urlopen('http://216.58.192.142', timeout=1)
+            internet.urlopen(self.URL, timeout=1)
             return True
         except internet.URLError as err:
             return False
@@ -37,7 +38,7 @@ class Recognition:
     def getRecognizer(self):
         _internet = self.isConnected()
         _recognizer = ("sphinx" if not _internet else self.recognizer)
-        print("Connection : " + ("success" if _internet else "failure"))
+        print("Testing connection to " + self.URL + " : " + ("success" if _internet else "failure"))
         print("Trying to recognize with " + _recognizer + "...")
         return {
             "google" : self.speech.recognize_google,
