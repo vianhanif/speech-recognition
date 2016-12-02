@@ -1,4 +1,5 @@
 from os import path
+import re as regex
 
 class DataSet:
     count_per_line = 10
@@ -10,12 +11,17 @@ class DataSet:
         self.FILE = name
         self.read()
 
-    def write(self, text):
-        self.data_list.append(text)
+    def isAWord(self, word):
+        return word and word != '\n' and regex.search("|A-Z|a-z|'|", word)
+
+    def write(self, word):
+        if self.isAWord(word):
+            if not word in self.data_list:
+                self.data_list.append(word)
 
     def save(self):
         self.data_list.sort()
-        print("Saving words to " + self.FILE)
+        print("Saving words to " + self.FILE + "...")
         data = open(path.join(path.dirname(path.realpath(__file__)), self.FILE), "w")
         text = ""
         i = 1
@@ -43,7 +49,7 @@ class DataSet:
             i = 0
             words = line.split(self.separator)
             for word in words:
-                if word and word != '\n' and len(word) >= 2:
+                if self.isAWord(word):
                     self.data_list.append(word)
         data.close()
 
@@ -51,4 +57,4 @@ class DataSet:
         return self.data_list
 
     def toString(self):
-        print("data : " + str(self.data_list))
+        print("data[" + str(len(self.data_list)) + " words]: " + str(self.data_list))

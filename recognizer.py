@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import time
+import urllib2 as internet
 from os import path
 
 class Recognition:
@@ -7,8 +8,8 @@ class Recognition:
     recognizer = ""
     audio = None
     data = None
-    error = ""
     audio_file = None
+    error = False
 
     def __init__(self, recognizer = "sphinx"):
         self.speech = sr.Recognizer()
@@ -25,27 +26,40 @@ class Recognition:
                 print("Listening to microphone...")
                 self.speech.adjust_for_ambient_noise(source)
                 self.audio = self.speech.listen(source)
-        
+
+    def isConnected(self):
+        try:
+            internet.urlopen('http://216.58.192.142', timeout=1)
+            return True
+        except internet.URLError as err:
+            return False
+    
     def getRecognizer(self):
-        print("Trying to recognize with " + self.recognizer + "...")
+        _internet = self.isConnected()
+        _recognizer = ("sphinx" if not _internet else self.recognizer)
+        print("Connection : " + ("success" if _internet else "failure"))
+        print("Trying to recognize with " + _recognizer + "...")
         return {
-            "sphinx" : self.speech.recognize_sphinx(self.audio),
-            "google" : self.speech.recognize_google(self.audio),
-            }[self.recognizer]
+            "google" : self.speech.recognize_google,
+            "sphinx" : self.speech.recognize_sphinx
+            }[_recognizer](self.audio)
 
     def recognize(self):
         try:
             self.data = self.getRecognizer()
+            print("Recorded : '" + self.data + "'")
+            return True
         except sr.UnknownValueError:
-            self.error = "Bot could not understand audio"
+            self.error = True
+            print("Bot could not understand audio")
+            return False
         except sr.RequestError as e:
-            self.error = "Bot error; {0}".format(e)
+            self.error = True
+            print("Bot error; {0}".format(e))
+            return False
 
     def getAudio(self):
         return self.audio
     
-    def getText(self, split = "none"):
-        return {
-            "none" : self.data,
-            "split": self.data.split()
-            }[split] if not self.error else self.error
+    def getText(self):
+        return self.data if not self.error else ""
