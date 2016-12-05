@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import time
 import urllib2 as internet
+import socket
+from socket import AF_INET, SOCK_DGRAM
 from os import path
 
 class Recognition:
@@ -33,6 +35,9 @@ class Recognition:
             internet.urlopen(self.URL, timeout=1)
             return True
         except internet.URLError as err:
+            return False
+        except socket.timeout:
+            print("time out")
             return False
     
     def getRecognizer(self):

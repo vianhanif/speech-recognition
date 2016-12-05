@@ -1,6 +1,7 @@
 from os import path
 import re as regex
 
+
 class DataSet:
     count_per_line = 10
     FILE = ""
@@ -12,7 +13,7 @@ class DataSet:
         self.read()
 
     def isAWord(self, word):
-        return word and word != '\n' and regex.search("|A-Z|a-z|'|", word)
+        return word and not bool(regex.compile(r'[^a-zA-Z]').search(word))
 
     def write(self, word):
         if self.isAWord(word):
@@ -44,7 +45,6 @@ class DataSet:
 
     def read(self):
         data = open(path.join(path.dirname(path.realpath(__file__)), self.FILE), "r")
-        self.data_list = []
         for line in data.readlines():
             i = 0
             words = line.split(self.separator)
