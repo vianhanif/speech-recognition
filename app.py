@@ -16,15 +16,17 @@ conversation = [
         "See you",
         "What is your favorite food?",
         "I like anykind of food",
-        ""
+        "What are you?",
+        "I am a Bot designed to introduce Speech Recognition program",
 ]
 
 def main():
-	say = "Hello"
+	say = ""
 	robot.train(conversation)
 	while say != "thank you":
                 try:
-                        robot.response(say)
+                        if say != "":
+                                robot.response(say)
                         speech.listen()
                         if speech.recognize():
                                 say = speech.getText()
