@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import speech_recognition as sr
 import time
 import urllib2 as internet
@@ -25,7 +26,7 @@ class Recognition:
                 print("Recording...")
                 self.audio = self.speech.record(source)
         else:
-            with sr.Microphone() as source:
+            with sr.Microphone(sample_rate=44100) as source:
                 print("Listening to microphone...")
                 self.speech.adjust_for_ambient_noise(source)
                 self.audio = self.speech.listen(source)
