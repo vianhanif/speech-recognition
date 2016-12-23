@@ -19,6 +19,8 @@ conversation = [
 	"Happy to hear that",
 	"Bye",
 	"See you next time",
+	"Hi",
+	"Hello",
         "Hello",
         "Hi there!",
         "How are you?",
