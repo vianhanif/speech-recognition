@@ -2,6 +2,7 @@
 from recognizer import Recognition
 from speech import Robot
 import time
+import sys
 
 speech = Recognition()
 robot = Robot()
@@ -31,18 +32,27 @@ conversation = [
 	"What do you do?",
 	"I introduce people about Speech Recognition program"
 ]
+say = ""
+
+def ask(say):
+	try:
+		if robot.response_text(say) == "bye":
+			robot.export_corpus()
+			sys.exit()
+	        if say != "":
+                	robot.response(say)
+                        #speech.listen()
+			say = raw_input("user :")
+			ask(say)
+                        #if speech.recognize():
+                                #say = speech.getText()
+	except (KeyboardInterrupt, EOFError, SystemExit):
+        	robot.export_corpus()
 
 def main():
-	say = ""
 	robot.train(conversation)
-	while say != "thank you":
-                try:
-                        if say != "":
-                                robot.response(say)
-                        speech.listen()
-                        if speech.recognize():
-                                say = speech.getText()
-                except (KeyboardInterrupt, EOFError, SystemExit):
-                        robot.export_corpus()
+	say = raw_input("user :")
+	ask(say)
+                
 
 if __name__ == '__main__':main()
