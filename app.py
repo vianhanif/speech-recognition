@@ -38,8 +38,10 @@ say = ""
 
 def ask(say):
 	try:
-		if robot.response_text(say) == "bye":
+		if str(robot.response_text(say)).lower() == "bye":
+			robot.response(say)
 			robot.export_corpus()
+			time.sleep(3)
 			sys.exit()
 	        if say != "":
                 	robot.response(say)
