@@ -11,11 +11,12 @@ class CorpusData:
                 [
                     "What is your name?",
                     "your name",
-                    "How do I call you?",
-                    "What should I call you?"
+                    "How do I",
+                    "What should I call you?",
+                    "have any name"
                 ],
                 [
-                    "My name is %s" % (self.robot.get_name()),
+                    "I used to be called as %s" % (self.robot.get_name()),
                     "You can call me %s" % (self.robot.get_name())
                 ],
             ],

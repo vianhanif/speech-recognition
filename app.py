@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from recognizer import Recognition
-from speech import Robot
+from robot import Robot
 from corpus import CorpusTrainer
 from corpus_data import CorpusData
 import time
 import sys
-from logic_adapter import ChatAdapter
 
 speech = Recognition()
 robot = Robot()
