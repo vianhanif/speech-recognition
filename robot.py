@@ -24,7 +24,7 @@ class Robot:
 			self.speech_engine.setProperty('voice', voice.id)
 	self.robot = ChatBot(
             name,
-            filters=["chatterbot.filters.RepetitiveResponseFilter"],
+            #filters=["chatterbot.filters.RepetitiveResponseFilter"],
             response_selection_method=get_random_response,
             logic_adapters=[
                 'robot.BasicConversation',
