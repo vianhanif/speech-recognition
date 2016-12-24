@@ -5,6 +5,7 @@ from corpus import CorpusTrainer
 from corpus_data import CorpusData
 import time
 import sys
+from logic_adapter import ChatAdapter
 
 speech = Recognition()
 robot = Robot()
@@ -29,6 +30,7 @@ def ask(say):
         	robot.export_corpus()
 
 def main():
+        robot.speak("Hi There. My name is %s. What is your name?" % (robot.get_name()))
 	say = raw_input("user :")
 	ask(say)
                 

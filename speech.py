@@ -5,7 +5,6 @@ import time
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.response_selection import get_random_response
-from chatfilter import ChatFilter
 
 # see http://pyttsx.readthedocs.org/en/latest/engine.html#pyttsx.init
 class Robot:
@@ -16,7 +15,6 @@ class Robot:
 
     def __init__(self, rate=130, name="Ryuji", intro="Hi There.", language='\x05zh-yue'):
         self.speech_engine = pyttsx.init(self.getEngine())
-	self.speech_engine.startLoop(False)
         self.speech_engine.setProperty("rate", rate)
 	self.voices = self.speech_engine.getProperty('voices')
 	for voice in self.voices:
@@ -25,11 +23,18 @@ class Robot:
 	self.robot = ChatBot(
             name,
             response_selection_method=get_random_response,
-            filters = [ChatFilter]
+            logic_adapters=[
+                'app.ChatAdapter',
+                'chatterbot.logic.BestMatch'
+            ]
         )
 	self.robot.set_trainer(ListTrainer)
 	self.name = name
-	self.speak("%s. My name is %s. You can ask me anything " % (intro, name))
+	try:
+            self.speech_engine.startLoop(False)
+        except (RuntimeError):
+            print("")
+            
 
     def getEngine(self):
         return {
@@ -46,6 +51,7 @@ class Robot:
 
     def speak(self, sentences):
         self.speech_engine.say(sentences)
+        #self.speech_engine.runAndWait()
 	self.speech_engine.iterate()
 
     def get_name(self):
