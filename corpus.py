@@ -19,5 +19,6 @@ class CorpusTrainer:
         
         def train(self, corpus):
                 self.robot.train(corpus)
+                
 
         

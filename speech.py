@@ -5,6 +5,7 @@ import time
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.response_selection import get_random_response
+from chatfilter import ChatFilter
 
 # see http://pyttsx.readthedocs.org/en/latest/engine.html#pyttsx.init
 class Robot:
@@ -23,7 +24,8 @@ class Robot:
 			self.speech_engine.setProperty('voice', voice.id)
 	self.robot = ChatBot(
             name,
-            response_selection_method=get_random_response
+            response_selection_method=get_random_response,
+            filters = [ChatFilter]
         )
 	self.robot.set_trainer(ListTrainer)
 	self.name = name
