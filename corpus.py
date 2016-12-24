@@ -7,6 +7,7 @@ class CorpusTrainer:
         def __init__(self, robot, corpus=[]):
                 self.robot = robot
                 self.corpus = corpus
+                self.trains(self.corpus)
 
         def trains(self, lists):
                 for item in lists:

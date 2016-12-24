@@ -15,7 +15,7 @@ class CorpusData:
                 ],
                 [
                     "My name is %s" % (self.robot.get_name()),
-                    "My friend used to call me %s" % (self.robot.get_name())
+                    "You can call me %s" % (self.robot.get_name())
                 ],
             ],
             # acknowledge user name

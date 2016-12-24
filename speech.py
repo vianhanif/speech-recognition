@@ -4,6 +4,7 @@ import pyttsx
 import time
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from chatterbot.response_selection import get_random_response
 
 # see http://pyttsx.readthedocs.org/en/latest/engine.html#pyttsx.init
 class Robot:
@@ -20,7 +21,10 @@ class Robot:
 	for voice in self.voices:
 		if str(voice.languages[0]) == language:
 			self.speech_engine.setProperty('voice', voice.id)
-	self.robot = ChatBot(name)
+	self.robot = ChatBot(
+            name,
+            response_selection_method=get_random_response
+        )
 	self.robot.set_trainer(ListTrainer)
 	self.name = name
 	self.speak("%s. My name is %s. You can ask me anything " % (intro, name))
