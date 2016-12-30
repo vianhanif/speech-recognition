@@ -23,6 +23,28 @@ class CorpusData:
                     "as you can see the label, my name is %s" % (self.robot.get_name())
                 ],
             ],
+            # asking about age
+            [
+                [
+                    "how old",
+                    "what is your age?"
+                ],
+                [
+                    "I believe i'm young, though i can't say much about that",
+                    "how old do you think i am?"
+                ]
+            ],
+            #acknowledge thought
+            [
+                [
+                    "I think",
+                    "probably about",
+                ],
+                [
+                    "Thank you for the consideration",
+                    "nice thought"
+                ]
+            ],
             # acknowledge user name
             [
                 [
@@ -121,6 +143,15 @@ class CorpusData:
                 ],
                 [
                     "Okay then..."
+                ]
+            ],
+            [
+                [
+                    "Thank you",
+                    "that's a nice",
+                ],
+                [
+                    "you're welcome"
                 ]
             ]
         ]
