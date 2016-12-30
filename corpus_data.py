@@ -52,6 +52,7 @@ class CorpusData:
                 [
                     "living in",
                     "live in",
+                    "staying in",
                 ],
                 [
                     "I hope you happiness by living there",
@@ -66,6 +67,7 @@ class CorpusData:
                     "working as",
                     "work in",
                     "job is",
+                    "working in",
                 ],
                 [
                     "Such an enjoyable job",
@@ -76,6 +78,52 @@ class CorpusData:
                     "Such an interesting job",
                 ]
             ],
+            # ackbowledge user family
+            [
+                [
+                    "living with",
+                    "to live with"
+                ],
+                [
+                    "It must be fun living with them",
+                    "I hope you happiness living with them",
+                    "I wish I could have such family",
+                    "How wonderful",
+                ]
+            ],
+            # acknowledge user hobby
+            [
+                [
+                    "I like",
+                    "usually play",
+                    "",
+                ],
+                [
+                    "is that your hobby?",
+                    "what a fun fact about you",
+                    "Such a fun activity",
+                ]
+            ],
+            #responding yes question
+            [
+                [
+                    "yes"
+                ],
+                [
+                    "very well then..",
+                    "nice...",
+                ]
+            ],
+            #responding no question
+            [
+                [
+                    "no",
+                    "not"
+                ],
+                [
+                    "Okay then..."
+                ]
+            ]
         ]
 
     def getCorpus(self):
