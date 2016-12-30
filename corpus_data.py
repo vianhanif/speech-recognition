@@ -96,7 +96,6 @@ class CorpusData:
                 [
                     "I like",
                     "usually play",
-                    "",
                 ],
                 [
                     "is that your hobby?",
