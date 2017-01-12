@@ -55,7 +55,8 @@ class Recognition:
     def recognize(self):
         try:
             self.data = self.getRecognizer()
-            print("Recorded : '" + self.data + "'")
+            #print("Recorded : '" + self.data + "'")
+            #print self.data
             return True
         except sr.UnknownValueError:
             self.error = True
