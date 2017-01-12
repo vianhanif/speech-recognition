@@ -44,8 +44,8 @@ class Recognition:
     def getRecognizer(self):
         _internet = self.isConnected()
         _recognizer = ("sphinx" if not _internet else self.recognizer)
-        print("Testing connection to " + self.URL + " : " + ("success" if _internet else "failure"))
-        print("Trying to recognize with " + _recognizer + "...")
+        #print("Testing connection to " + self.URL + " : " + ("success" if _internet else "failure"))
+        #print("Trying to recognize with " + _recognizer + "...")
         return {
             "google" : self.speech.recognize_google,
             "sphinx" : self.speech.recognize_sphinx
