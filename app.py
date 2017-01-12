@@ -18,8 +18,8 @@ def ask(say):
 			robot.export_corpus()
 			time.sleep(3)
 			sys.exit()
-	        if say != "":
-                        robot.response(say)
+	        #if say != "":
+                robot.response(say)
                 speech.listen()
 			#say = raw_input("user :")
                 if speech.recognize():
