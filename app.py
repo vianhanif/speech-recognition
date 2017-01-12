@@ -19,11 +19,11 @@ def ask(say):
 			time.sleep(3)
 			sys.exit()
 	        if say != "":
-                	robot.response(say)
-                        speech.listen()
+                        robot.response(say)
+                speech.listen()
 			#say = raw_input("user :")
-                        if speech.recognize():
-                                say = speech.getText()
+                if speech.recognize():
+                        say = speech.getText()
                 ask(say)
 	except (KeyboardInterrupt, EOFError, SystemExit):
         	robot.export_corpus()
