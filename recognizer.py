@@ -38,12 +38,12 @@ class Recognition:
         except internet.URLError as err:
             return False
         except socket.timeout:
-            print("time out")
+            #print("time out")
             return False
     
     def getRecognizer(self):
-        _internet = self.isConnected()
-        _recognizer = ("sphinx" if not _internet else self.recognizer)
+        #_internet = self.isConnected()
+        _recognizer = ("sphinx")
         #print("Testing connection to " + self.URL + " : " + ("success" if _internet else "failure"))
         #print("Trying to recognize with " + _recognizer + "...")
         print("responding...")
