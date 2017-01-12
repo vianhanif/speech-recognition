@@ -50,7 +50,7 @@ class Recognition:
         return {
             "google" : self.speech.recognize_google,
             "sphinx" : self.speech.recognize_sphinx
-            }[_recognizer](self.audio)
+            }[_recognizer](self.audio, language="en-US", keyword_entries = None, show_all=True)
 
     def recognize(self):
         try:
