@@ -20,18 +20,21 @@ def ask(say):
 			sys.exit()
 	        if say != "":
                 	robot.response(say)
-                        #speech.listen()
-			say = raw_input("user :")
-			ask(say)
-                        #if speech.recognize():
-                                #say = speech.getText()
+                        speech.listen()
+			#say = raw_input("user :")
+                        if speech.recognize():
+                                say = speech.getText()
+                ask(say)
 	except (KeyboardInterrupt, EOFError, SystemExit):
         	robot.export_corpus()
 
 def main():
         robot.speak("Hi There. My name is %s. What is your name?" % (robot.get_name()))
-	say = raw_input("user :")
-	ask(say)
+	#say = raw_input("user :")
+        speech.listen()
+        if speech.recognize():
+                say = speech.getText()
+                ask(say)
                 
 
 if __name__ == '__main__':main()
